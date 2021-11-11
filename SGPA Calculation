@@ -1,0 +1,58 @@
+
+import java.util.*;
+class Student
+{
+Scanner in = new Scanner (System.in);
+String usn, name;
+double credits[], marks[];
+int n;
+Student()
+{
+usn = "\0";
+name = "\0";
+n = 0;
+}
+
+void Input()
+{
+System.out.println ("Enter name: ");
+name = in.next();
+System.out.println ("Enter usn: ");
+usn = in.next();
+System.out.println ("Enter no. of subjects: ");
+n = in.nextInt();
+credits = new double[n];
+marks = new double[n];
+System.out.println ("Enter no. of marks of subjects and no. of credits: ");
+for (int i = 0; i < n; i++)
+{
+marks[i] = in.nextDouble();
+credits[i] = in.nextDouble();
+}
+}
+
+void Display()
+{
+System.out.println ("Name: " + name + "\nUsn: " + usn);
+System.out.println ("MARKS\tCREDITS");
+for (int i =0; i < n; i++)
+System.out.println (marks[i] + "\t" + credits[i]);
+System.out.println ("SGPA: " + Calculate());
+}
+
+double Calculate()
+{
+int total = 0;
+for (int i = 0; i < n; i++)
+total += (double)(marks[i]/credits[i]);
+return (double)(total)/n;
+}
+
+public static void main (String args[])
+{
+Student obj = new Student();
+obj.Input();
+obj.Display();
+}
+
+}
